@@ -21,18 +21,6 @@ Zebra.graph = function (V, E) {
     return graph
 };
 
-Zebra.G.addVertices = function (vs) {
-    vs.forEach(this.addVertex.bind(this));
-};
-
-Zebra.G.addEdges = function (es) {
-    es.forEach(this.addEdge.bind(this));
-};
-
-Zebra.G.findVertexById = function (vertex_id) {
-    return this.vertexIndex[vertex_id];
-}
-
 Zebra.G.addVertex = function (vertex) {
     if (!vertex._id) {
         vertex._id = this.autoid++;
@@ -61,6 +49,18 @@ Zebra.G.addEdge = function (edge) {
 
     this.edges.push(edge);
 };
+
+Zebra.G.addVertices = function (vs) {
+    vs.forEach(this.addVertex.bind(this));
+};
+
+Zebra.G.addEdges = function (es) {
+    es.forEach(this.addEdge.bind(this));
+};
+
+Zebra.G.findVertexById = function (vertex_id) {
+    return this.vertexIndex[vertex_id];
+}
 
 Zebra.error = function (msg) {
     console.log(msg);
