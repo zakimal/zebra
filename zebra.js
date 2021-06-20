@@ -58,9 +58,24 @@ Zebra.G.addEdges = function (es) {
     es.forEach(this.addEdge.bind(this));
 };
 
+// Zebra.G.removeVertex
+// Zebra.G.removeEdge
+
+// Zebra.G.findVertex
+
 Zebra.G.findVertexById = function (vertex_id) {
     return this.vertexIndex[vertex_id];
 }
+
+// Zebra.G.findVertices
+// Zebra.G.findVerticesByIds
+
+// Zebra.G.searchVertices
+
+// Zebra.G.findOutEdges
+// Zebra.G.findInEdges
+
+// Zebra.fromString
 
 Zebra.error = function (msg) {
     console.log(msg);
