@@ -1,4 +1,4 @@
-Zebra = {}; // the namespace
+var Zebra = {}; // the namespace
 
 Zebra.G = {}; // the prototype
 
