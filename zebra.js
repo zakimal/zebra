@@ -1,5 +1,7 @@
 var Zebra = {}; // the namespace
 
+/************** Graph Store **************/
+
 Zebra.G = {}; // the prototype
 
 Zebra.graph = function (V, E) {
@@ -82,7 +84,35 @@ Zebra.error = function (msg) {
     return false;
 };
 
-// test
+/************** Graph Query **************/
+
+Zebra.Q = {};
+
+Zebra.query = function (graph) {
+    var query = Object.create(Zebra.Q);
+
+    query.graph = graph; // the graph itself
+    query.state = [];    // state for each step
+    query.program = [];  // list of steps to take
+    query.gremlins = []; // gremlins,  a creature that travels through the graph for each step
+
+    return query;
+};
+
+Zebra.Q.add = function (pipetype, args) {
+    var step = [pipetype, args];
+    this.program.push(step);
+    return this;
+};
+
+// query initializer
+Zebra.G.v = function () {
+    var query = Zebra.query(this);
+    query.add('vertex', [].slice.call(arguments));
+    return query;
+};
+
+/************** Test **************/
 V = [{ name: 'alice' }                                         // alice gets auto-_id (prolly 1)
     , { _id: 10, name: 'bob', hobbies: ['asdf', { x: 3 }] }];
 E = [{ _out: 1, _in: 10, _label: 'knows' }];
